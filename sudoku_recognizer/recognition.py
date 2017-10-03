@@ -123,3 +123,5 @@ solved = solve(numbers2D)
 rendered_solved = render_grid(solved)
 print("Solved:")
 print(rendered_solved)
+
+input()
