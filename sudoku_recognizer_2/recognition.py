@@ -11,7 +11,7 @@ import math
 
 
 print("Enter path to image:")
-path = "C:/Users/Jonas Martin/Pictures/Saved Pictures/Sudoku9.jpg"
+path = input()
 path.replace("\\", "/")
 print("...")
 original_img = cv2.imread(path)
