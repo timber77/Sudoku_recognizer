@@ -10,7 +10,7 @@ from sudoku_solver import solve, render_grid
 import math
 
 
-print("Enter path to image:")
+print("Enter path to image including the imagename with the file extension:")
 path = input()
 path.replace("\\", "/")
 print("...")
