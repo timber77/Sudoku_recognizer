@@ -7,7 +7,6 @@ import pytesseract
 from PIL import Image
 import image_slicer
 from sudoku_solver import solve, render_grid
-import os
 import math
 
 
@@ -76,10 +75,11 @@ for x in range(0, len(lines)):
         cv2.line(resized_gauss_thresh_norm, (x1, y1),
                  (x2, y2), (255, 255, 255), 5)
 
-        cv2.line(resized_original_img, (x1, y1), (x2, y2), (0, 255, 0), 5) # not necessary only used to see which lines are detected
+        # not necessary only used to see which lines are detected
+        cv2.line(resized_original_img, (x1, y1), (x2, y2), (0, 255, 0), 5)
 print("finding lines done")
 
-#scaling the image so that it can  be properly splitted
+# scaling the image so that it can  be properly splitted
 cv2.imwrite("unscaled.jpg", resized_gauss_thresh_norm)
 height_2, width_2 = resized_gauss_thresh_norm.shape[0:2]
 unscaled_img = Image.open("unscaled.jpg")
@@ -93,19 +93,19 @@ os.remove("parts.jpg")
 print("splitting done")
 
 
-
 # running googles tesseract-ocr over each of the 81 images to recognise the number
 print("detecting numbers")
 numbers = []
 for part in parts:
     im = part.image
-    im = im.resize((100, 100),Image.BICUBIC) # enlarge the small images to reach better results with tesseract-ocr, which is optimized for "big" images
-    number = pytesseract.image_to_string(im, config="--psm 10 -c tessedit_char_whitelist=123456789")
+    # enlarge the small images to reach better results with tesseract-ocr, which is optimized for "big" images
+    im = im.resize((100, 100), Image.BICUBIC)
+    number = pytesseract.image_to_string(
+        im, config="--psm 10 -c tessedit_char_whitelist=123456789")
     if number.isnumeric():  # if there is no number on the image we add 0 to the list with the numbers
         numbers.append(int(number))
     else:
         numbers.append(0)
-
 
 
 # creating a 2D list out of the 1D list
@@ -118,7 +118,7 @@ print("Solving:")
 print(rendered_unsolved, "\n")
 
 
-#printing the solved sudoku
+# printing the solved sudoku
 solved = solve(numbers2D)
 rendered_solved = render_grid(solved)
 print("Solved:")
