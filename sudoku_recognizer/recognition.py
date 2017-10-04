@@ -96,6 +96,7 @@ print("splitting done")
 # running googles tesseract-ocr over each of the 81 images to recognise the number
 print("detecting numbers")
 numbers = []
+step = 0
 for part in parts:
     im = part.image
     # enlarge the small images to reach better results with tesseract-ocr, which is optimized for "big" images
@@ -106,6 +107,9 @@ for part in parts:
         numbers.append(int(number))
     else:
         numbers.append(0)
+    step += 1
+    print("{0}%".format(100*step//81), end="\r") #prints the progress of the number detection
+
 
 
 # creating a 2D list out of the 1D list
