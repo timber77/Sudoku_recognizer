@@ -1,0 +1,5 @@
+pillow
+image_slicer
+pytesseract
+numpy-1.13.3+mkl-cp36-cp36m-win_amd64.whl
+opencv_python-3.3.0+contrib-cp36-cp36m-win_amd64.whl
