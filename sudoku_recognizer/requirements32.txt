@@ -1,5 +1,5 @@
 pillow
 image_slicer
 pytesseract
-numpy-1.13.3+mkl-cp36-cp36m-win32.whl
+numpy-1.13.3.mkl-cp36-cp36m-win32.whl
 opencv_python-3.3.0-cp36-cp36m-win32.whl
