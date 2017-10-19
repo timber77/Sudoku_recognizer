@@ -64,7 +64,6 @@ x2, y2 = approximation[2][0]
 resized_mean_thresh_inv = mean_thresh_inv[y1:y2, x1:x2]
 resized_mean_thresh_norm = mean_thresh_norm[y1:y2, x1:x2]
 resized_original_img = original_img[y1:y2, x1:x2]
-
 print("resizing done")
 
 # finding the lines of the grid
@@ -90,6 +89,7 @@ new_size = math.ceil(width_2 / 9) * 9
 scaled_img = unscaled_img.resize((new_size, new_size), Image.NEAREST)
 os.remove("unscaled.jpg")
 # splitting the image into 81 equal sqares
+scaled_img.show()
 scaled_img.save("parts.jpg", "JPEG")
 parts = image_slicer.slice("parts.jpg", 81, save=False)
 os.remove("parts.jpg")
@@ -120,6 +120,8 @@ for part in parts:
     step += 1
     print("{0}%".format(100*step//81), end="\r") #prints the progress of the number detection
 
+    # if (step == 15):
+        # im.show()
 
 
 # creating a 2D list out of the 1D list
