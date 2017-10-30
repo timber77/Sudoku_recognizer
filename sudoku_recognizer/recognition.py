@@ -13,7 +13,7 @@ import math
 print("Enter path to image including the imagename with the file extension:")
 path = input()
 path.replace("\\", "/")
-#if the path starts with and end with " the quotes are removed.
+# if the path starts with and end with " the quotes are removed.
 if (path[0] == '"' and path[-1] == '"'):
     path = path[1:-1]
 print("...")
@@ -113,13 +113,14 @@ for part in parts:
         if pixel == (0):
             black += 1
 
-    if (number.isnumeric() and black >= 100) :  # if there is a number on the image and there are at least 100 black pixels we add it to the list with the numbers
+    # if there is a number on the image and there are at least 100 black pixels we add it to the list with the numbers
+    if (number.isnumeric() and black >= 100):
         numbers.append(int(number))
     else:
         numbers.append(0)
     step += 1
-    print("{0}%".format(100*step//81), end="\r") #prints the progress of the number detection
-
+    # prints the progress of the number detection
+    print("{0}%".format(100 * step // 81), end="\r")
 
 
 # creating a 2D list out of the 1D list
